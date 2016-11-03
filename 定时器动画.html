@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 50px;
+			}
+			.box1{
+				width:500px;
+				height:500px;
+				border-right: 10px solid black;
+				position: relative;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function (){
+			var btn = document.getElementsByTagName('input')[0];
+			var div = document.getElementsByTagName('div');
+			var box = document.getElementById('box');
+			var num = 0;
+			var timer = 1;
+			var left = parseInt(getStyle(div[1],"width"))
+			console.log(left)
+			btn.onclick = function (){
+				clearInterval(timer)
+				timer = setInterval (function (){
+					num += 5;
+					if(num >= left){
+						clearInterval(timer)
+					}
+					box.style.left = num + 'px';
+				},20)
+			}
+			function getStyle(obj,attr){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+			}
+			
+		}
+	</script>
+	<body>
+		<div id="box">
+			
+		</div>
+		<div class="box1">
+			
+		</div>
+		<input type="button" name="" id="" value="开始" />
+	</body>
+</html>

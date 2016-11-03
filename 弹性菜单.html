@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				width: 502px;
+				height: 500px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			li{
+				position: relative;
+				width: 100px;
+				height: 30px;
+				float: left;
+				text-align: center;
+			}
+			dl{
+				margin: 0;
+				width:98px;
+				height: 28px;
+				background: #CCCCCC;
+				position: absolute;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+				border: 1px solid #000;
+			}
+			dt{
+				font: 14px/28px "微软雅黑";
+				height: 28px;
+			}
+			dd{
+				margin: 0;
+				height: 25px;
+				font:12px/25px "微软雅黑";
+				border-top:1px solid red ;
+			}
+		</style>
+	</head>
+	<script src="startMove.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function (){
+			var ul = document.getElementById('box');
+			var dls= ul.getElementsByTagName('dl');
+			var dds = ul.getElementsByTagName('dd');
+			var dlH = parseInt(getStyle(dls[0],"height"));
+			var ddH = parseInt(getStyle(dds[0],"height"));
+			for(var i=0;i<dls.length;i++){
+				fn1(dls[i])
+			}
+			function fn1(obj){
+				obj.onmouseover = function (){
+					var dd = this.getElementsByTagName('dd');
+					var target = dd.length*ddH+dlH;
+					startMove(this,'height',500,target+6,"backOut");
+				}
+				obj.onmouseout = function (){
+					var dd = this.getElementsByTagName('dd');
+					startMove(this,'height',500,ddH,"easeOut");
+				}
+			}
+		}
+		function getStyle(obj,attr){
+			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr]
+		}
+	</script>
+	<body>
+		<ul id="box">
+			<li>
+				<dl>
+					<dt>菜单一</dt>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>菜单一</dt>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>菜单一</dt>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>菜单一</dt>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+					<dd>内容一</dd>
+				</dl>
+			</li>
+		</ul>
+	</body>
+</html>
